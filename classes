@@ -1,0 +1,120 @@
+class AliveCreature:
+    def __init__(self):
+        pass
+
+    def born(self):
+        print('{} was born'.format(self.__class__.__name__))
+
+    def eat(self):
+        print('{} am-am-am'.format(self.__class__.__name__))
+
+    def dead(self):
+        print('{} is dead'.format(self.__class__.__name__))
+
+    def voice(self):
+        pass
+
+
+class Animal(AliveCreature):
+    def __init__(self):
+        super().__init__()
+
+    def walk(self):
+        print('{} is walking'.format(self.__class__.__name__))
+
+
+class Bird(AliveCreature):
+    def __init__(self):
+        super().__init__()
+
+    def fly(self):
+        print('{} is flying'.format(self.__class__.__name__))
+
+
+class Cow(Animal):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Muuuuuuuuu')
+
+
+class Pig(Animal):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Hru-Hruuuuu')
+
+
+class Goat(Animal):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Beeeeeee lile goat')
+
+
+class Sheep(Animal):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Be-be like sheep!')
+
+
+class Duck(Bird):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Ga-ga-ga like duck')
+
+
+class Chicken(Bird):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Co-co-co')
+
+
+class Goose(Bird):
+    def __init__(self):
+        super().__init__()
+
+    def voice(self):
+        print('Ga-ga-ga like goose')
+
+
+cow = Cow()
+cow.voice()
+
+pig = Pig()
+pig.voice()
+
+goat = Goat()
+goat.voice()
+
+sheep = Sheep()
+sheep.voice()
+
+duck = Duck()
+duck.voice()
+
+chicken = Chicken()
+chicken.voice()
+
+print('\n')
+goose = Goose()
+goose.born()
+goose.eat()
+goose.voice()
+goose.fly()
+goose.dead()
+
+
+
+
+
+
