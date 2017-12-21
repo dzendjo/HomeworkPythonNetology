@@ -1,6 +1,4 @@
 class AliveCreature:
-    def __init__(self):
-        pass
 
     def born(self):
         print('{} was born'.format(self.__class__.__name__))
@@ -16,105 +14,92 @@ class AliveCreature:
 
 
 class Animal(AliveCreature):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name=''):
+        self.name = name
 
     def walk(self):
         print('{} is walking'.format(self.__class__.__name__))
 
 
 class Bird(AliveCreature):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name=''):
+        self.name = name
 
     def fly(self):
         print('{} is flying'.format(self.__class__.__name__))
 
 
 class Cow(Animal):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Muuuuuuuuu')
+        if self.name != '':
+            print('Я корова  {}'.format(self.name))
 
 
 class Pig(Animal):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Hru-Hruuuuu')
 
 
 class Goat(Animal):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Beeeeeee lile goat')
 
 
 class Sheep(Animal):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Be-be like sheep!')
 
 
 class Duck(Bird):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Ga-ga-ga like duck')
 
 
 class Chicken(Bird):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Co-co-co')
 
 
 class Goose(Bird):
-    def __init__(self):
-        super().__init__()
 
     def voice(self):
         print('Ga-ga-ga like goose')
+        if self.name != '':
+            print('Я гусь  {}'.format(self.name))
 
 
-cow = Cow()
-cow.voice()
+cow1 = Cow('Мурка')
+cow1.voice()
 
-pig = Pig()
-pig.voice()
+cow2 = Cow('Зорька')
+cow2.voice()
 
-goat = Goat()
-goat.voice()
+# pig = Pig()
+# pig.voice()
 
-sheep = Sheep()
-sheep.voice()
-
-duck = Duck()
-duck.voice()
-
-chicken = Chicken()
-chicken.voice()
+# goat = Goat()
+# goat.voice()
+#
+# sheep = Sheep()
+# sheep.voice()
+#
+# duck = Duck()
+# duck.voice()
+#
+# chicken = Chicken()
+# chicken.voice()
 
 print('\n')
-goose = Goose()
+goose = Goose('Дональд')
 goose.born()
 goose.eat()
 goose.voice()
 goose.fly()
 goose.dead()
-
-
-
-
-
-
