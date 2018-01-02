@@ -31,25 +31,3 @@ print_top_words_from_file('data/newsafr.txt')
 print_top_words_from_file('data/newscy.txt')
 print_top_words_from_file('data/newsfr.txt')
 print_top_words_from_file('data/newsit.txt')
-
-
-# def count_words(words_list):
-#     """
-#     Функция для подсчета слов в списке. Возвращает словарь вида "слово" : количество вхождений
-#     """
-#     res_dict = dict()
-#     for word in words_list:
-#         if word in res_dict.keys():
-#             res_dict[word] += 1
-#         else:
-#             res_dict[word] = 1
-#     return res_dict
-
-# data = read_files('data/newsafr.txt')
-# words_list = [word for word in data.split(' ') if len(word) >= 6]
-# counted_words_dict = count_words(words_list)
-# top_word_list = sorted(counted_words_dict, key=counted_words_dict.get)[:-11:-1]
-#
-
-
-
