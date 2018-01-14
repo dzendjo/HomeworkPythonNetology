@@ -1,5 +1,6 @@
 import json
 import chardet
+import xml.etree.ElementTree as ET
 
 
 def get_top_words(text, len_of_word = 6):
@@ -17,7 +18,7 @@ def get_top_words(text, len_of_word = 6):
     return top_words_dict
 
 
-def print_top_words_from_file(filename):
+def print_top_words_from_json(filename):
     with open(filename, 'rb') as f:
         data = f.read()
         encoding_type = chardet.detect(data)['encoding']
@@ -34,7 +35,41 @@ def print_top_words_from_file(filename):
             print('-- Слово "{}" встречается {} раз'.format(word, top_words_dict[word]))
 
 
-print_top_words_from_file('data/newsafr.json')
-print_top_words_from_file('data/newscy.json')
-print_top_words_from_file('data/newsfr.json')
-print_top_words_from_file('data/newsit.json')
+def print_top_words_from_xml(filename):
+    encoding_type = ''
+    with open(filename, 'rb') as f:
+        data = f.read()
+        encoding_type = chardet.detect(data)['encoding']
+        print(encoding_type)
+
+    print('\nРаботаем с файлом {}:'.format(filename))
+    tree = ET.parse(filename)
+    descriptions = tree.findall('channel/item/description')
+    all_text = ''
+    for description in descriptions:
+        text = description.text.encode(encoding_type)
+        text = text.decode(encoding_type)
+        text = text.replace('<br>', ' ')
+        all_text += text
+    top_words_dict = get_top_words(all_text)
+    for word in top_words_dict:
+        print('-- Слово "{}" встречается {} раз'.format(word, top_words_dict[word]))
+
+
+# print_top_words_from_file('data/newsafr.json')
+# print_top_words_from_file('data/newscy.json')
+# print_top_words_from_file('data/newsfr.json')
+# print_top_words_from_file('data/newsit.json')
+
+print_top_words_from_xml('data/newsit.xml')
+print_top_words_from_xml('data/newsfr.xml')
+# print_top_words_from_xml('data/newsit.xml')
+
+
+# text = '<br><br>anananananananana <br>hfhfhfh fjfjfj<br>'
+# text = text.replace('<br>', ' ')
+# print(text)
+
+# tree = ET.parse('data/newscy.xml')
+# tree = ET.parse('data/newsfr.xml')
+# tree = ET.parse('data/newsit.xml')
