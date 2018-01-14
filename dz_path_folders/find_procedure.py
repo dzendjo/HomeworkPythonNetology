@@ -36,13 +36,12 @@
 # не забываем организовывать собственный код в функции
 
 import os
-import pprint
 
 migrations = 'Migrations'
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
+
 def find_is_sql_files(find_string, files_list):
-    find_string = find_string  # input('Введите строку: ')
     result_file_list = []
     for file in files_list:
         with open(file) as f:
