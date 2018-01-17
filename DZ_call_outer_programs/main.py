@@ -5,9 +5,6 @@ import subprocess
 abs_dir_path = os.path.abspath(os.path.dirname(__file__))
 source_dir = os.path.join(abs_dir_path, 'Source')
 result_dir = os.path.join(abs_dir_path, 'Result')
-print(result_dir)
-
-print(os.path.exists(result_dir))
 
 if not os.path.exists(result_dir):
     os.mkdir(result_dir)
