@@ -1,5 +1,6 @@
 import os
 import requests
+import sys
 
 API_KEY = 'trnsl.1.1.20161025T233221Z.47834a66fd7895d0.a95fd4bfde5c1794fa433453956bd261eae80152'
 URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
@@ -33,7 +34,8 @@ def translate_it(file_in, file_out, from_lang, to_lang='ru'):
         json_ = response.json()
         translated_data = ''.join(json_['text'])
     else:
-        raise FileExistsError
+        print('File {} does not exist'.format(file_in), file=sys.stderr)
+        return 0
 
     with open(file_out, 'w') as f:
         f.write(translated_data)
