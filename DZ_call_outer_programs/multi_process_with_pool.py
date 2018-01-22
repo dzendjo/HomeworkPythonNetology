@@ -15,3 +15,4 @@ def resize_file(file_name):
 
 with multiprocessing.Pool(processes=4) as pool:
     pool.map(resize_file, os.listdir(source_dir))
+
