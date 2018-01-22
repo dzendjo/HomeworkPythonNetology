@@ -61,7 +61,7 @@ def find_is_sql_files(find_string, files_list):
 if __name__ == '__main__':
     dir_migrations = os.path.join(current_dir, migrations)
     files_list = (os.path.join(migrations, sql_file_name) for sql_file_name in os.listdir(dir_migrations)
-                  if sql_file_name[-3:] == 'sql')
+                  if sql_file_name.endswith('sql'))
 
     while True:
         find_string = input('Введите строку: ')
