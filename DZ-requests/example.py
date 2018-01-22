@@ -1,9 +1,11 @@
+import os
 import requests
 
 API_KEY = 'trnsl.1.1.20161025T233221Z.47834a66fd7895d0.a95fd4bfde5c1794fa433453956bd261eae80152'
 URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
 
-def translate_it(text, to_lang):
+
+def translate_it(file_in, file_out, from_lang, to_lang='ru'):
     """
     https://translate.yandex.net/api/v1.5/tr.json/translate ?
     key=<API-ключ>
@@ -17,15 +19,28 @@ def translate_it(text, to_lang):
     :return:
     """
 
-    params = {
-        'key': API_KEY,
-        'text': text,
-        'lang': 'ru-{}'.format(to_lang),
-    }
+    if os.path.exists(file_in):
+        with open(file_in, encoding='utf-8') as f:
+            data = f.read()
 
-    response = requests.get(URL, params=params)
-    json_ = response.json()
-    return ''.join(json_['text'])
+        params = {
+            'key': API_KEY,
+            'text': data,
+            'lang': '{}-{}'.format(from_lang, to_lang),
+        }
+
+        response = requests.get(URL, params=params)
+        json_ = response.json()
+        translated_data = ''.join(json_['text'])
+    else:
+        raise FileExistsError
+
+    with open(file_out, 'w') as f:
+        f.write(translated_data)
+
+    return 1
 
 
-print(translate_it('В настоящее время доступна единственная опция — признак включения в ответ автоматически определенного языка переводимого текста. Этому соответствует значение 1 этого параметра.', 'en'))
+translate_it('../data/ES.txt', 'ES-RU.txt', 'es')
+translate_it('../data/DE.txt', 'DE-RU.txt', 'de')
+translate_it('../data/FR.txt', 'FR-RU.txt', 'fr')
