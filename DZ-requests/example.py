@@ -41,6 +41,8 @@ def translate_it(file_in, file_out, from_lang, to_lang='ru'):
     return 1
 
 
-translate_it('../data/ES.txt', 'ES-RU.txt', 'es')
-translate_it('../data/DE.txt', 'DE-RU.txt', 'de')
-translate_it('../data/FR.txt', 'FR-RU.txt', 'fr')
+cur_dir = os.path.abspath(os.path.dirname(__file__))
+
+translate_it(os.path.join(cur_dir, 'data/ES.txt'), os.path.join(cur_dir, 'ES-RU.txt'), 'es')
+translate_it(os.path.join(cur_dir, 'data/DE.txt'), os.path.join(cur_dir, 'DE-RU.txt'), 'de')
+translate_it(os.path.join(cur_dir, 'data/FR.txt'), os.path.join(cur_dir, 'FR-RU.txt'), 'fr')
