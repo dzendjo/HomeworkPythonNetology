@@ -37,7 +37,6 @@ def length_in_km(file_url):
         for line in f:
             client = osa.client.Client(URL_CONVERT_LENGTH)
             mi_length = float(line.split(' ')[1].replace(',', ''))
-            print(mi_length)
             response = client.service.ChangeLengthUnit(fromLengthUnit='Miles', toLengthUnit='Kilometers',
                                                        LengthValue=mi_length, rounding=True)
             km_list.append(response)
